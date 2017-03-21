@@ -25,19 +25,19 @@ app.use(cookieParser());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next) {
-    res.header('Content-Security-Policy-Report-Only',
+/*    res.header('Content-Security-Policy-Report-Only',
         "default-src 'none'; " +
         "style-src 'self' maxcdn.bootstrapcdn.com; " +
-        "script-src 'self' ajax.googleapis.com maxcdn.bootstrapcdn.com; " +
+        "script-src 'self' ; " +
         "font-src 'self' maxcdn.bootstrapcdn.com; " +
         "img-src 'self'; " +
-        "report-uri /csp_report");
+        "report-uri http://131.232.4.116:3000/csp/csp_report");*/
     next();
 });
 
-app.use('/', index);
-app.use('/users', users);
-app.use('/csp_report', csp_report);
+app.use('/csp/', index);
+app.use('/csp/users', users);
+app.use('/csp/csp_report', csp_report);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
